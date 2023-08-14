@@ -1,7 +1,9 @@
+import "./styling.css";
+
 const Table = ({ sat }) => {
   return (
       <table>
-       <thead>
+        <thead>
         <tr>
           <th>Name</th>
           <th>Type of Satellite</th>
@@ -10,14 +12,18 @@ const Table = ({ sat }) => {
         </tr>
         </thead>
         <tbody>
-        <tr {satdata.map(id,data) => {key=id}>
-          <td>{data.name} </td>
-          <td>{data.type}</td>
-          <td>{data.launchDate}</td>
-          <td>{data.operational}</td>
-
-
-        </tr>
+        {sat.map((data, id) => {
+          return (
+            <tr key={id}>
+              <td>{data.name}</td>
+              <td>{data.type}</td>
+              <td>{data.launchDate}</td>
+              <td>
+                {data.operational ? "Active" : "Inactive"}
+              </td>
+            </tr>
+          );
+        })}
         </tbody>
       </table>
   );
